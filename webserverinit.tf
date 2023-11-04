@@ -1,12 +1,11 @@
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired AWS region
+  region = "us-east-2"
 }
 
 resource "aws_security_group" "web_server_sg" {
   name        = "web-server-sg"
-  description = "Security group for web server"
+  description = "security group for web server"
   
-  // Allow incoming HTTP traffic (port 80) from anywhere
   ingress {
     from_port   = 80
     to_port     = 80
@@ -14,7 +13,6 @@ resource "aws_security_group" "web_server_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   
-  // Allow incoming SSH traffic (port 22) only from your IP address
   ingress {
     from_port   = 22
     to_port     = 22
@@ -24,13 +22,11 @@ resource "aws_security_group" "web_server_sg" {
 }
 
 resource "aws_instance" "web_server" {
-  ami           = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI
+  ami           = "ami-089c26792dcb1fbd4"  # Amazon Linux 2 AMI
   instance_type = "t2.micro"
   
-  // Associate the security group with the instance
   vpc_security_group_ids = [aws_security_group.web_server_sg.id]
   
-  // User data to install a basic web server
   user_data = <<-EOF
               #!/bin/bash
               yum update -y
