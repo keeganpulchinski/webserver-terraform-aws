@@ -13,27 +13,28 @@ resource "aws_security_group" "web_server_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["your-ip-address/32"]  # Replace with your public IP address
-  }
+
 }
 
 resource "aws_instance" "web_server" {
-  ami           = "ami-089c26792dcb1fbd4"  # Amazon Linux 2 AMI
+  ami           = "ami-06d4b7182ac3480fa"  # Amazon Linux 2023 AMI
   instance_type = "t2.micro"
   
   vpc_security_group_ids = [aws_security_group.web_server_sg.id]
   
   user_data = <<-EOF
               #!/bin/bash
-              yum update -y
-              yum install -y httpd
+              dnf update -y
+              dnf install -y httpd
               systemctl start httpd
               systemctl enable httpd
               echo "Hello, World!" > /var/www/html/index.html
+              mkdir /tmp/ssm
+              cd /tmp/ssm
+              curl -O https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/amazon-ssm-agent.rpm
+              dnf install -y amazon-ssm-agent.rpm
+              systemctl enable amazon-ssm-agent
+              rm amazon-ssm-agent.rpm
               EOF
 }
 
