@@ -25,12 +25,12 @@ You must also have an AWS account and an IAM user that has minimal permissions t
     - instance_type: The instance type to use for the instance.
 
 4. In your terminal, run terraform init in order to initialize the working directory of Terrafom and to download the provider plugins that are required
-  '''terraform init'''
+   ```terraform init```
 5. To view the changes that Terraform will make to your infrastructure, run the terraform plan command
-  '''terraform plan'''
+    ```terraform plan```
 6. Run terraform apply to create the AWS resource files that are defined in the 'webserverinit.tf' file, and then confirm by typing 'yes' and then pressing Enter
-  '''terraform apply'''
+   ```terraform apply```
 7. Once completed, go into the Console to ensure that your instance was successfully created
 8. Go into SSM to connect to the instance
 9. After successful completion, run terraform destroy to remove all of the resources that are defined in the 'webserverinit.tf' file
-'''terraform destroy'''
+```terraform destroy```
