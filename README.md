@@ -42,3 +42,5 @@ You must also have an AWS account and an IAM user that has minimal permissions t
     ```
     terraform destroy
     ```
+## Conclusion and Reflection
+This repository shows a very simple way to create an EC2 instance running a web server by using Terraform to initialize everything. Some things that could be done to improve modularity, flexibility, and security would be to remove the hardcoding of variables. I could also revise the security group portion by using a dynamic block so that it would be easier to add more rules in the future. For the AMI, I could use a data source for an AMI lookup so that the latest Linux AMI could be found dynamically. This project is meant to be a very barebones way to be able to grasp Terraform fundamentals. I was able to attain a pretty solid basic understanding of how to launch resources into AWS using Terraform.
