@@ -39,6 +39,6 @@ You must also have an AWS account and an IAM user that has minimal permissions t
 7. Once completed, go into the Console to ensure that your instance was successfully created
 8. Go into SSM to connect to the instance
 9. After successful completion, run terraform destroy to remove all of the resources that are defined in the 'webserverinit.tf' file
-```
-terraform destroy
-```
+    ```
+    terraform destroy
+    ```
