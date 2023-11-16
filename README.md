@@ -11,6 +11,7 @@ To use this repository, you first must install the following software on your ma
 You must also have an AWS account and an IAM user that has minimal permissions that will be enough to create and manage EC2 instances, along with using SSM. The permissions are already included in the file and will be created for you, but instructions regarding permissions can be found below:
 
 [IAM Roles for EC2 Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)
+
 [IAM Permissions for SSM](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-permissions.html)
 
 ## Instructions
